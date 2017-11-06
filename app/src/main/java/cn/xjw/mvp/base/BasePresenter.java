@@ -14,5 +14,25 @@ public class BasePresenter<T extends BaseContract.View> implements BaseContract.
         this.view = (T) view;
     }
 
+    @Override
+    public void start() {
+
+    }
+
+    @Override
+    public void resume() {
+
+    }
+
+    @Override
+    public void paush() {
+
+    }
+
+    @Override
+    public void destroy() {
+
+    }
+
 
 }

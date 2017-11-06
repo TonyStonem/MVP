@@ -1,5 +1,6 @@
 package cn.xjw.mvp.utils;
 
+import android.os.Process;
 import android.support.v7.app.AppCompatActivity;
 
 import java.util.Stack;
@@ -11,15 +12,15 @@ import java.util.Stack;
 
 public class ActivityStack {
 
-    private ActivityStack(){
-
+    private ActivityStack() {
+        activityStack = new Stack<>();
     }
 
     private static ActivityStack stack;
 
-    private static Stack<AppCompatActivity> activityStack = new Stack<>();
+    private Stack<AppCompatActivity> activityStack;
 
-    public static ActivityStack get(){
+    public static ActivityStack get() {
         if (stack == null) {
             synchronized (ActivityStack.class) {
                 if (stack == null) {
@@ -34,6 +35,18 @@ public class ActivityStack {
         return activityStack.add(appCompatActivity);
     }
 
+    public boolean remove(AppCompatActivity appCompatActivity) {
+        return activityStack.remove(appCompatActivity);
+    }
+
+    public void exit() {
+        while (activityStack.size() > 0) {
+            AppCompatActivity removeActivity = activityStack.remove(0);
+            removeActivity.finish();
+        }
+        Process.killProcess(Process.myPid());
+        System.exit(0);
+    }
 
 
 }

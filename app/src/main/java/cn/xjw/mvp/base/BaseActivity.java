@@ -32,6 +32,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
                 injectPresenter(
                         DaggerMainComponent.builder().build()));
         basePresenter.attchView(this);
+        basePresenter.start();
         start();
     }
 
@@ -57,5 +58,24 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
     @Override
     public void close() {
         finish();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        basePresenter.resume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        basePresenter.paush();
+    }
+
+    @Override
+    protected void onDestroy() {
+        basePresenter.destroy();
+        ActivityStack.get().remove(this);
+        super.onDestroy();
     }
 }

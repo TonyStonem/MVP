@@ -21,6 +21,14 @@ public interface BaseContract {
 
         void attchView(T view);
 
+        void start();
+
+        void resume();
+
+        void paush();
+
+        void destroy();
+
     }
 
 }
