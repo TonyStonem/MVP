@@ -14,6 +14,7 @@
 
     <EditText
         android:hint="密码"
+        android:inputType="textPassword"
         android:id="@+id/et_pswd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
