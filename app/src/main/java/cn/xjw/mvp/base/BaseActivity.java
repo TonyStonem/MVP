@@ -9,6 +9,7 @@ import butterknife.ButterKnife;
 import cn.xjw.mvp.di.component.DaggerMainComponent;
 import cn.xjw.mvp.di.component.MainComponent;
 import cn.xjw.mvp.utils.ActivityStack;
+import cn.xjw.mvp.utils.UIUtils;
 import dagger.internal.Preconditions;
 
 /**
@@ -28,9 +29,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
         setContentView(getLayoutResID());
         ActivityStack.get().add(this);
         ButterKnife.bind(this);
-        basePresenter = Preconditions.checkNotNull(
-                injectPresenter(
-                        DaggerMainComponent.builder().build()));
+        basePresenter = Preconditions.checkNotNull(injectPresenter(DaggerMainComponent.builder().build()));
         basePresenter.attchView(this);
         basePresenter.start();
         start();
@@ -53,6 +52,11 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
     @Override
     public void cancelLoadingDai() {
 
+    }
+
+    @Override
+    public void showToast(String msg) {
+        UIUtils.showToast(this, msg);
     }
 
     @Override

@@ -11,9 +11,10 @@ import cn.xjw.mvp.R;
 import cn.xjw.mvp.base.BaseActivity;
 import cn.xjw.mvp.base.BaseContract;
 import cn.xjw.mvp.di.component.MainComponent;
+import cn.xjw.mvp.module.contract.LoginContract;
 import cn.xjw.mvp.module.presenter.LoginPresenter;
 
-public class LoginActivity extends BaseActivity {
+public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @Inject
     LoginPresenter presenter;
@@ -32,7 +33,7 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void start() {
-
+        btnSubmit.setText("登录");
     }
 
     @Override
@@ -44,5 +45,15 @@ public class LoginActivity extends BaseActivity {
     @OnClick(R.id.btn_submit)
     public void onViewClicked() {
         presenter.login();
+    }
+
+    @Override
+    public String getName() {
+        return etName.getText().toString().trim();
+    }
+
+    @Override
+    public String getPswd() {
+        return etPswd.getText().toString().trim();
     }
 }

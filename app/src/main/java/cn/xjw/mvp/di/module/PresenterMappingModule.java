@@ -15,6 +15,6 @@ public abstract class PresenterMappingModule {
 
     @PerActivity
     @Binds
-    abstract LoginContract.Presenter provideLoginPresenter(LoginPresenter presenter);
+    public abstract LoginContract.Presenter provideLoginPresenter(LoginPresenter presenter);
 
 }

@@ -13,6 +13,8 @@ public interface BaseContract {
 
         void cancelLoadingDai();
 
+        void showToast(String msg);
+
         void close();
 
     }
@@ -28,6 +30,10 @@ public interface BaseContract {
         void paush();
 
         void destroy();
+
+    }
+
+    interface Model{
 
     }
 
