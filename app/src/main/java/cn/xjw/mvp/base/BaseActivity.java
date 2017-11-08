@@ -41,9 +41,9 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
     @LayoutRes
     abstract protected int getLayoutResID();
 
-    abstract protected void start();
-
     protected abstract BaseContract.Presenter injectPresenter(MainComponent build);
+
+    abstract protected void start();
 
 
     @Override
@@ -62,7 +62,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
         }
         diaCount--;
         if (diaCount <= 0) {
-
+            //TODO 取消Dia
         }
     }
 
