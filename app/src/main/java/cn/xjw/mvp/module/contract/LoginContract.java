@@ -16,6 +16,7 @@ public interface LoginContract {
 
         String getPswd();
 
+        void gotoMain();
     }
 
     interface Presenter extends BaseContract.Presenter {

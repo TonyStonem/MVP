@@ -22,6 +22,8 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
     private AppCompatActivity activity;
     private BaseContract.Presenter basePresenter;
 
+    private int diaCount;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,12 +48,22 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
 
     @Override
     public void showLoadingDia() {
-
+        diaCount++;
     }
 
     @Override
-    public void cancelLoadingDai() {
+    public void cancelLoadingDia() {
+        cancelLoadingDia(false);
+    }
 
+    private void cancelLoadingDia(boolean b) {
+        if (b) {
+            diaCount = 0;
+        }
+        diaCount--;
+        if (diaCount <= 0) {
+
+        }
     }
 
     @Override
@@ -79,6 +91,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
     @Override
     protected void onDestroy() {
         basePresenter.destroy();
+        cancelLoadingDia(true);
         ActivityStack.get().remove(this);
         super.onDestroy();
     }

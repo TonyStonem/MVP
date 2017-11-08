@@ -1,5 +1,6 @@
 package cn.xjw.mvp.module.view;
 
+import android.content.Intent;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -12,13 +13,11 @@ import cn.xjw.mvp.base.BaseActivity;
 import cn.xjw.mvp.base.BaseContract;
 import cn.xjw.mvp.di.component.MainComponent;
 import cn.xjw.mvp.module.contract.LoginContract;
-import cn.xjw.mvp.module.presenter.LoginPresenter;
 
 public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @Inject
-    LoginPresenter presenter;
-
+    LoginContract.Presenter presenter;
     @BindView(R.id.et_name)
     EditText etName;
     @BindView(R.id.et_pswd)
@@ -55,5 +54,11 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     @Override
     public String getPswd() {
         return etPswd.getText().toString().trim();
+    }
+
+    @Override
+    public void gotoMain() {
+        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        close();
     }
 }

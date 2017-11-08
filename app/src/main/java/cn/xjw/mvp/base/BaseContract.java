@@ -11,7 +11,7 @@ public interface BaseContract {
 
         void showLoadingDia();
 
-        void cancelLoadingDai();
+        void cancelLoadingDia();
 
         void showToast(String msg);
 

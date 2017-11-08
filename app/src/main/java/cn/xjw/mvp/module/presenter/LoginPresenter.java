@@ -25,6 +25,13 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
     LoginModel model;
 
     @Override
+    public void start() {
+
+        view.showToast("start.");
+
+    }
+
+    @Override
     public void login() {
         String name = view.getName();
         String pswd = view.getPswd();
@@ -49,6 +56,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
             @Override
             public void success(String json) {
                 view.showToast(json);
+                view.gotoMain();
             }
 
             @Override
