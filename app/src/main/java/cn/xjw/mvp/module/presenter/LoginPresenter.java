@@ -66,7 +66,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
 
             @Override
             public void end() {
-                view.cancelLoadingDai();
+                view.cancelLoadingDia();
             }
         });
 
